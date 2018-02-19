@@ -69,6 +69,7 @@
       <DependentUpon>PrincipalMaster.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\PrincipalMenuItem.cs" />
+    <Compile Include="WS\UsuarioWS.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="MainPage.xaml">
@@ -120,7 +121,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Business\" />
-    <Folder Include="WS\" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Views\Login.xaml">
