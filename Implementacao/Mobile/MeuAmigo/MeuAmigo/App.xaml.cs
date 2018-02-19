@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-
+using MeuAmigo.Model;
+using MeuAmigo.Views;
 using Xamarin.Forms;
 
 namespace MeuAmigo
@@ -12,8 +13,10 @@ namespace MeuAmigo
         public App()
         {
             InitializeComponent();
-
-            MainPage = new MeuAmigo.MainPage();
+            Session.Navigation = new NavigationPage(new Login());
+            MainPage = new Principal();
+            
+            ((Principal)MainPage).Detail = Session.Navigation;
         }
 
         protected override void OnStart()

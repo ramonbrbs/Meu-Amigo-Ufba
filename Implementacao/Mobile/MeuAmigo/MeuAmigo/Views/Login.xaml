@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MeuAmigo.Views.Login"
+             NavigationPage.HasNavigationBar="False">
+    <ContentPage.Content>
+        <StackLayout>
+            <ScrollView>
+                <StackLayout>
+                    
+                    
+                    <Grid BackgroundColor="White" Grid.RowSpacing="15" Margin="0,20,0,0">
+                        <Grid.RowDefinitions>
+
+                            <RowDefinition Height="1*"></RowDefinition>
+                            <RowDefinition Height="1*"></RowDefinition>
+                            <RowDefinition Height="1*"></RowDefinition>
+                            <RowDefinition Height="1*"></RowDefinition>
+                            <RowDefinition Height="1*"></RowDefinition>
+                            
+                            <RowDefinition Height="1*"></RowDefinition>
+                        </Grid.RowDefinitions>
+
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="1*"></ColumnDefinition>
+                            <ColumnDefinition Width="8*"></ColumnDefinition>
+                            <ColumnDefinition Width="1*"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+
+                        <StackLayout Grid.Row="1" Grid.Column="1" Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                            <Image Source="user.png" WidthRequest="32" HeightRequest="32"></Image>
+                            <Entry Keyboard="Email" HorizontalTextAlignment="Center" Placeholder="E-mail"  VerticalOptions="Center" HorizontalOptions="FillAndExpand"  FontSize="Medium" x:Name="TxtEmail" TextColor="Black" PlaceholderColor="#424242"></Entry>
+                            
+                        </StackLayout>
+
+
+                        <StackLayout Grid.Row="2" Grid.Column="1" Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                            <Image Source="user.png" WidthRequest="32" HeightRequest="32"></Image>
+                            <Entry Keyboard="Default" HorizontalTextAlignment="Center" IsPassword="True"  Placeholder="Senha" HorizontalOptions="FillAndExpand"  VerticalOptions="Center"  FontSize="20" x:Name="Senha" TextColor="Black" PlaceholderColor="#424242" ></Entry>
+                        </StackLayout>
+
+                            
+                        <ActivityIndicator IsVisible="False" IsRunning="False" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" x:Name="ActLoading" Grid.Row="3" Grid.Column="1"/>
+                        <Button Text="Entrar" Clicked="BtnEntrar_OnClicked" BackgroundColor="#90caf9" FontSize="Medium" HorizontalOptions="Fill" Grid.Column="1" Grid.Row="4" BorderRadius="5" BorderWidth="2" x:Name="BtnEntrar"></Button>
+                        <Button Text="Cadastrar"  BackgroundColor="#90caf9" FontSize="Medium" HorizontalOptions="Fill" Grid.Column="1" Grid.Row="5" BorderRadius="5" BorderWidth="2" Clicked="Cadastrar_Clicked"></Button>
+                        
+                    </Grid>
+                </StackLayout>
+
+            </ScrollView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

@@ -6,9 +6,7 @@ using System.Threading.Tasks;
 
 namespace MeuAmigo.Model
 {
-    public class Curso
+    class Configuracao
     {
-        public int IdCurso { get; set; }
-        public string Nome { get; set; }
     }
 }

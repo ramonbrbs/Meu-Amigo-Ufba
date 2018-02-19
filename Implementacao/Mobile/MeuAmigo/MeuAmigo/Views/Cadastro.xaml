@@ -1,0 +1,65 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<CarouselPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:xForms="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms"
+             x:Class="MeuAmigo.Views.Cadastro">
+    <ContentPage x:Name="Page1">
+        <ScrollView>
+            <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                <Label Text="Bem Vindo!" FontSize="32" Margin="15,0,0,0" TextColor="#0d47a1"></Label>
+                <StackLayout Margin="8,10,8,0">
+                    <Entry x:Name="TxtNome" Placeholder="Nome" HorizontalOptions="FillAndExpand"></Entry>
+                    <Entry x:Name="TxtTelefone" Placeholder="Telefone" HorizontalOptions="FillAndExpand"></Entry>
+                    <Entry x:Name="TxtNascimento" Placeholder="Data de Nascimento" Focused="TxtNascimento_OnFocused"></Entry>
+                    <DatePicker IsVisible="False" x:Name="Nascimento" HorizontalOptions="FillAndExpand" DateSelected="Nascimento_OnDateSelected"></DatePicker>
+                    <Entry x:Name="Email" Placeholder="E-mail"></Entry>
+                </StackLayout>
+                <Button HorizontalOptions="EndAndExpand" TextColor="White" Text="Próximo" BackgroundColor="#1b5e20" Clicked="Page1_Proximo" Margin="8" ></Button>
+            </StackLayout>
+        </ScrollView>
+        
+    </ContentPage>
+    <ContentPage x:Name="PageSelecao">
+        <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+            <Label Text="Where are you from?" FontSize="20" Margin="15,0,0,0" TextColor="#0d47a1"></Label>
+            <StackLayout VerticalOptions="CenterAndExpand" HorizontalOptions="FillAndExpand" Orientation="Horizontal" Margin="8,0,8,0" Spacing="8">
+                <Grid HorizontalOptions="FillAndExpand">
+                    <Grid.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="Outside_Clicked"></TapGestureRecognizer>
+                    </Grid.GestureRecognizers>
+                    <Button BackgroundColor="#0d47a1" TextColor="White" Opacity=".8" HorizontalOptions="FillAndExpand" HeightRequest="120" Clicked="Outside_Clicked"></Button>
+                    <Label HorizontalOptions="CenterAndExpand" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" FontSize="16" TextColor="White" Text="I'm an UFBA student" LineBreakMode="WordWrap"></Label>
+                </Grid>
+                <Grid HorizontalOptions="FillAndExpand">
+                    <Grid.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="Outside_Clicked"></TapGestureRecognizer>
+                    </Grid.GestureRecognizers>
+                    <Button BackgroundColor="#0d47a1" TextColor="White" Opacity=".8" HorizontalOptions="FillAndExpand" HeightRequest="120" Clicked="Outside_Clicked"></Button>
+                    <Label HorizontalOptions="CenterAndExpand" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" FontSize="16" TextColor="White" Text="I'm from another university" LineBreakMode="WordWrap"></Label>
+                </Grid>
+            </StackLayout>
+                
+            </StackLayout>
+        
+    </ContentPage>
+    <ContentPage x:Name="LinguaCurso">
+        <StackLayout Margin="8">
+            <Entry Placeholder="What's your course?"></Entry>
+            <Entry Placeholder="What's your nationality?"></Entry>
+            <Label Text="What languages do you speak?"></Label>
+            <Picker x:Name="PckLinguas"></Picker>
+            <xForms:SfListView x:Name="LstLinguas" />
+            <Button HorizontalOptions="EndAndExpand" TextColor="White" Text="Next" BackgroundColor="#1b5e20" Clicked="PageDetalhes_Proximo" Margin="0,8,0,0" ></Button>
+        </StackLayout>
+    </ContentPage>
+    
+    <ContentPage x:Name="Interesses">
+        <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+            <Label Text="What are your interests?"></Label>
+            <xForms:SfListView x:Name="LstInteresses" />
+
+            <Button HorizontalOptions="EndAndExpand" TextColor="White" Text="Complete" BackgroundColor="#1b5e20" Clicked="Concluir_Clicked" Margin="0,8,0,0" ></Button>
+        </StackLayout>
+    </ContentPage>
+    
+</CarouselPage>
