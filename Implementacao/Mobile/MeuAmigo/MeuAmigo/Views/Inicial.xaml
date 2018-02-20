@@ -5,8 +5,7 @@
              x:Class="MeuAmigo.Views.Inicial">
     <ContentPage.Content>
         <StackLayout Spacing="0">
-
-
+            <Button Text="Search for Users" Clicked="Search_clicked"></Button>
             <ListView x:Name="LstContatosPendentes" RowHeight="40" VerticalOptions="Start" SeparatorVisibility="None">
                 <ListView.ItemTemplate >
 

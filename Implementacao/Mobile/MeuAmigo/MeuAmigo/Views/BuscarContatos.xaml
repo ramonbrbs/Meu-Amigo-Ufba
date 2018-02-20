@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MeuAmigo.Views.BuscarContatos">
+    <ContentPage.Content>
+        <AbsoluteLayout x:Name="Abs">
+            <StackLayout AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0,0,1,1">
+                <ListView x:Name="Lista" RowHeight="90">
+                    <ListView.ItemTemplate >
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout>
+                                <Label Margin="8,0,0,0" Text="{Binding Usuario.Nome}" FontSize="Large" FontAttributes="Bold" TextColor="Black"/>
+                                <StackLayout Orientation="Horizontal">
+                                    <Label Text="Linguas:" FontSize="Medium" TextColor="Black"/>
+                                    <Label Text="{Binding LinguasStr}" FontSize="Medium" TextColor="Black"/>
+                                </StackLayout>
+                                
+                                
+                                
+                            </StackLayout>
+                            
+                        </ViewCell>
+
+
+                    </DataTemplate>
+                        </ListView.ItemTemplate >
+                </ListView>
+            </StackLayout>
+        </AbsoluteLayout>
+    </ContentPage.Content>
+</ContentPage>

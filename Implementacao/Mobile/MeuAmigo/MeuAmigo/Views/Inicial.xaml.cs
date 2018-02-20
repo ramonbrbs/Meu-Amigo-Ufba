@@ -42,5 +42,10 @@ namespace MeuAmigo.Views
             }
             
         }
+
+        private void Search_clicked(object sender, EventArgs e)
+        {
+            Session.Navigation.Navigation.PushAsync(new BuscarContatos());
+        }
     }
 }

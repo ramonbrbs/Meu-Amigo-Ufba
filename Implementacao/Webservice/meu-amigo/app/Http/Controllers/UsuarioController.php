@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Usuario;
 use App\Contato;
+use App\Usuario_lingua;
 use DB;
 
 class UsuarioController extends Controller
@@ -94,7 +95,19 @@ class UsuarioController extends Controller
 
     public function buscar_contatos(Request $request){
         $id = $request->input('id');
-        $usuarios = DB::table('usuarios')->whereRaw("score($id,id) > 0")->orderByRaw("score($id, id)")->get();
+        $usuario = Usuario_lingua::find($id);
+        if($usuario->tipo==0){
+            $usuarios = DB::table('usuarios as u')->whereRaw("score($id,u.id) > 0 and (SELECT COUNT(*) FROM contatos where id_usuario_local = $id and id_usuario_estrangeiro = u.id LIMIT 1) = 0")->orderByRaw("score($id, u.id) DESC")->get();
+        }else{
+            $usuarios = DB::table('usuarios as u')->whereRaw("score($id,u.id) > 0 and (SELECT COUNT(*) FROM contatos where id_usuario_estrangeiro = $id and id_usuario_local = u.id LIMIT 1) = 0")->orderByRaw("score($id, u.id) DESC")->get();
+        }
+        
         return response()->json($usuarios,200);
+    }
+
+    public function linguas_usuario(Request $request){
+        $id = $request->input('id');
+        $linguas = DB::table('usuario_linguas as ul')->join('linguas as l', 'l.id', '=', 'ul.id_lingua')->where("id_usuario","$id")->get(['l.*']);
+        return response()->json($linguas,200);
     }
 }

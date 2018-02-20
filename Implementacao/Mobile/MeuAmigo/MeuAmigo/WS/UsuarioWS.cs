@@ -117,5 +117,39 @@ namespace MeuAmigo.WS
                 throw ex;
             }
         }
+
+        public static async Task<List<Usuario>> GetBuscaContatos(int id)
+        {
+            try
+            {
+                //string cnpj, string cpf, DateTime? mes, DateTime? inicioPeriodo, DateTime? fimPeriodo, int convenioId, int //hospitalId, string paciente, int? situacaoId
+
+                string url = Constantes.URL_API + $"buscar_contatos?id={id}";
+                var req = new Request(url);
+                return await req.Get<List<Usuario>>();
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+        }
+
+        public static async Task<List<Lingua>> GetLinguaUsuario(int id)
+        {
+            try
+            {
+                //string cnpj, string cpf, DateTime? mes, DateTime? inicioPeriodo, DateTime? fimPeriodo, int convenioId, int //hospitalId, string paciente, int? situacaoId
+
+                string url = Constantes.URL_API + $"linguas_usuario?id={id}";
+                var req = new Request(url);
+                return await req.Get<List<Lingua>>();
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+        }
     }
 }
