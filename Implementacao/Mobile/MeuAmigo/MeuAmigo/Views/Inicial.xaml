@@ -48,7 +48,7 @@
 
             <Label HorizontalOptions="StartAndExpand" Margin="10,10,0,0" Text="Contacts" TextColor="Black" FontSize="40" FontAttributes="Bold"></Label>
             <Label HorizontalOptions="CenterAndExpand" Margin="0,10,0,0" Text="You have no contacts." IsVisible="False" x:Name="LblSemItens"></Label>
-            <ListView x:Name="LstContatos" Margin="10,10,0,0" HeightRequest="100" SeparatorVisibility="None">
+            <ListView x:Name="LstContatos" Margin="10,10,0,0" HeightRequest="100" SeparatorVisibility="None" ItemTapped="LstContatos_OnItemTapped">
                 <ListView.ItemTemplate >
                     <DataTemplate>
                         <ViewCell>
@@ -57,7 +57,7 @@
                                     <StackLayout>
                                         <StackLayout Orientation="Horizontal">
                                             <Image HeightRequest="70" WidthRequest="70" Source="{Binding FotoSource}"></Image>
-                                            <Label Margin="8,0,0,0" Text="{Binding Nome}" FontSize="Large" FontAttributes="Bold" TextColor="Black"/>
+                                            <Label Margin="8,0,0,0" Text="{Binding Nome}" HorizontalOptions="CenterAndExpand" FontSize="Large" FontAttributes="Bold" TextColor="Black"/>
                                         </StackLayout>
                                     </StackLayout>
                                     

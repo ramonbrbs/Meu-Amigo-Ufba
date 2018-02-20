@@ -93,7 +93,7 @@ namespace MeuAmigo.Views
         private void LstContatos_OnItemTapped(object sender, ItemTappedEventArgs e)
         {
             var u = (Usuario)e.Item;
-            Session.Navigation.Navigation.PushAsync(new VisualizarPerfil())
+            Session.Navigation.Navigation.PushAsync(new VisualizarPerfil(u.Id));
         }
     }
 }

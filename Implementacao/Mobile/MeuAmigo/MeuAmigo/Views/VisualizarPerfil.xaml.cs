@@ -12,15 +12,18 @@ namespace MeuAmigo.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class VisualizarPerfil : ContentPage
     {
-        public VisualizarPerfil()
+        private int _id;
+        public VisualizarPerfil(int id)
         {
+            _id = id;
             InitializeComponent();
+            
         }
 
         protected async override void OnAppearing()
         {
             base.OnAppearing();
-            var usuario = await UsuarioWS.Info();
+            var usuario = await UsuarioWS.Info(_id);
             var vm = new BuscarContatos.BuscaVM();
             vm.Usuario = usuario;
             BindingContext = vm;

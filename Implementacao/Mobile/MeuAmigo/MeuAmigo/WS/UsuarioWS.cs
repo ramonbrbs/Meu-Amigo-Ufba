@@ -216,13 +216,13 @@ namespace MeuAmigo.WS
             }
         }
 
-        public static async Task<Usuario> Info()
+        public static async Task<Usuario> Info(int id)
         {
             try
             {
                 //string cnpj, string cpf, DateTime? mes, DateTime? inicioPeriodo, DateTime? fimPeriodo, int convenioId, int //hospitalId, string paciente, int? situacaoId
 
-                string url = Constantes.URL_API + $"usuario_info?id={Session.UsuarioLogado.Id}";
+                string url = Constantes.URL_API + $"usuario_info?id={id}";
                 var req = new Request(url);
                 return await req.Get<Usuario>();
             }
