@@ -2,6 +2,6 @@
 
 Aplicativo para interação entre estudantes de intercâmbio estrangeiros e alunos da UFBA.
 
-### Banco: MER e Modelo Lógico
-### Documentos: Tech Stack, Requisitos, Protótipos
+### Banco: MER, Modelo Lógico, Script SQL
+### Documentos: Tech Stack, Requisitos, Protótipos, Dicionário de Dados
 
