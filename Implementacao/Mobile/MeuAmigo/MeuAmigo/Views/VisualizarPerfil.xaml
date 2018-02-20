@@ -3,10 +3,9 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MeuAmigo.Views.VisualizarPerfil">
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+        <StackLayout Margin="10" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+            <Image Source="{Binding Usuario.FotoSource}" HorizontalOptions="Center" WidthRequest="120" HeightRequest="120"></Image>
+            <Label TextColor="Black" FontSize="40" FontAttributes="Bold" Text="{Binding Usuario.Nome}}"></Label>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

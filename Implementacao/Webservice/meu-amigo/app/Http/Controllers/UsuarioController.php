@@ -17,6 +17,14 @@ class UsuarioController extends Controller
         return response()->json($usuario, 200);
     }
 
+    public function info(Request $request)
+    {
+        $id = $request->input('id');
+        $usuario = Usuario::find($id);
+
+        return response()->json($usuario, 200);
+    }
+
     public function login(Request $request){
         $email = $request->input('email');
         $senha = $request->input('senha');

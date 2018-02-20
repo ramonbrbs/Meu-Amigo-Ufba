@@ -32,3 +32,4 @@ Route::post('solicitar_contato', 'UsuarioController@solicitar_contato');
 Route::get('buscar_contatos', 'UsuarioController@buscar_contatos');
 Route::get('linguas_usuario', 'UsuarioController@linguas_usuario');
 Route::get('interesses_usuario', 'UsuarioController@interesses_usuario');
+Route::get('usuario_info', 'UsuarioController@info');

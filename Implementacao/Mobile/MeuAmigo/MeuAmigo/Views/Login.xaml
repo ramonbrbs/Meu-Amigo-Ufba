@@ -35,7 +35,7 @@
 
 
                         <StackLayout Grid.Row="2" Grid.Column="1" Orientation="Horizontal" HorizontalOptions="FillAndExpand">
-                            <Image Source="user.png" WidthRequest="32" HeightRequest="32"></Image>
+                            <Image Source="password.png" WidthRequest="32" HeightRequest="32"></Image>
                             <Entry Keyboard="Default" HorizontalTextAlignment="Center" IsPassword="True"  Placeholder="Senha" HorizontalOptions="FillAndExpand"  VerticalOptions="Center"  FontSize="20" x:Name="Senha" TextColor="Black" PlaceholderColor="#424242" ></Entry>
                         </StackLayout>
 

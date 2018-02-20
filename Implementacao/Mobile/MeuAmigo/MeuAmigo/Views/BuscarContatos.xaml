@@ -4,8 +4,10 @@
              x:Class="MeuAmigo.Views.BuscarContatos">
     <ContentPage.Content>
         <AbsoluteLayout x:Name="Abs">
-            <StackLayout AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0,0,1,1">
-                <ListView x:Name="Lista" RowHeight="150" HorizontalOptions="FillAndExpand">
+            <StackLayout AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0,0,1,1" Padding="10">
+                <Label TextColor="Black" Text="Users who may help you:" FontAttributes="Bold" FontSize="Large"></Label>
+                <Label TextColor="Black" Text="Oops. No users found." HorizontalTextAlignment="Center"></Label>
+                <ListView x:Name="Lista" RowHeight="150" HorizontalOptions="FillAndExpand" Margin="0,15,0,0">
                     <ListView.ItemTemplate >
                     <DataTemplate>
                         <ViewCell>

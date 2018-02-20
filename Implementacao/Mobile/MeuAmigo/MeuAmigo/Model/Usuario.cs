@@ -22,6 +22,17 @@ namespace MeuAmigo.Model
         public string Origem { get; set; }
         public int Curso_Id { get; set; }
 
+
+        [JsonIgnore]
+        public int IgnoreOnSerializing
+        {
+            get { return IdContato.Value; }
+            set { this.IdContato = value; }
+        }
+
+        [JsonProperty(nameof(IdContato))]
+        public int IgnoreOnSerializingSetter { set { IdContato = value; } }
+
         [JsonIgnore]
         public ImageSource FotoSource {
             get
@@ -36,6 +47,8 @@ namespace MeuAmigo.Model
         {
             return Nome;
         }
+
+
 
 
     }

@@ -215,5 +215,22 @@ namespace MeuAmigo.WS
                 throw ex;
             }
         }
+
+        public static async Task<Usuario> Info()
+        {
+            try
+            {
+                //string cnpj, string cpf, DateTime? mes, DateTime? inicioPeriodo, DateTime? fimPeriodo, int convenioId, int //hospitalId, string paciente, int? situacaoId
+
+                string url = Constantes.URL_API + $"usuario_info?id={Session.UsuarioLogado.Id}";
+                var req = new Request(url);
+                return await req.Get<Usuario>();
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+        }
     }
 }
