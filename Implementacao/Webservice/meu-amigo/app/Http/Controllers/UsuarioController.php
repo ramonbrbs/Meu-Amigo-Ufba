@@ -45,9 +45,9 @@ class UsuarioController extends Controller
         $id = $request->input('id');
         $usuario = DB::table('usuarios')->where('id', $id)->first();
         if($usuario->tipo == 0){
-            $contatos = DB::table('contatos')->join('usuarios', 'usuarios.id', '=', 'contatos.id_usuario_estrangeiro') ->where('id_usuario_local', $id)->where('aceito',0)->where('estrangeiroaceito','0')->get(['usuarios.*']);
+            $contatos = DB::table('contatos')->join('usuarios', 'usuarios.id', '=', 'contatos.id_usuario_estrangeiro') ->where('id_usuario_local', $id)->where('aceito',0)->where('estrangeiroaceito','1')->get(['usuarios.*']);
         }else{
-            $contatos = DB::table('contatos')->join('usuarios', 'usuarios.id', '=', 'contatos.id_usuario_local') ->where('id_usuario_estrangeiro', $id)->where('aceito',0)->where('localaceito','0')->get(['usuarios.*']);
+            $contatos = DB::table('contatos')->join('usuarios', 'usuarios.id', '=', 'contatos.id_usuario_local') ->where('id_usuario_estrangeiro', $id)->where('aceito',0)->where('localaceito','1')->get(['usuarios.*']);
         }
         
         return response()->json($contatos,200);
@@ -108,6 +108,12 @@ class UsuarioController extends Controller
     public function linguas_usuario(Request $request){
         $id = $request->input('id');
         $linguas = DB::table('usuario_linguas as ul')->join('linguas as l', 'l.id', '=', 'ul.id_lingua')->where("id_usuario","$id")->get(['l.*']);
+        return response()->json($linguas,200);
+    }
+
+    public function interesses_usuario(Request $request){
+        $id = $request->input('id');
+        $linguas = DB::table('usuario_interesses as ui')->join('interesses as i', 'i.id', '=', 'ui.id_interesse')->where("id_usuario","$id")->get(['i.*']);
         return response()->json($linguas,200);
     }
 }

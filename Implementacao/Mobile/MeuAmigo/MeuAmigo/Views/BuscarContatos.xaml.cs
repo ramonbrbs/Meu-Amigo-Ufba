@@ -22,8 +22,9 @@ namespace MeuAmigo.Views
         {
             public Usuario Usuario { get; set; }
             public List<Lingua> Linguas { get; set; }
-
+            public List<Interesse> Interesses { get; set; }
             public string LinguasStr => String.Join(",", Linguas);
+            public string InteressesStr => String.Join(",", Interesses);
         }
 
         protected override async void OnAppearing()
@@ -38,11 +39,28 @@ namespace MeuAmigo.Views
                     var b = new BuscaVM();
                     b.Usuario = u;
                     b.Linguas = await UsuarioWS.GetLinguaUsuario(u.Id);
+                    b.Interesses = await UsuarioWS.GetInteresseUsuario(u.Id);
                     lista.Add(b);
                 }
                 Lista.ItemsSource = lista;
             }
             catch (Exception e)
+            {
+                
+                throw;
+            }
+            
+        }
+
+        private async void Add_Tapped(object sender, EventArgs e)
+        {
+            try
+            {
+                ((Button)sender).IsVisible = false;
+                int param = (int)((Button)sender).CommandParameter;
+                await UsuarioWS.SolicitarContato(param);
+            }
+            catch (Exception exception)
             {
                 
                 throw;

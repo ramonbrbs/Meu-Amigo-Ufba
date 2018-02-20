@@ -5,20 +5,32 @@
     <ContentPage.Content>
         <AbsoluteLayout x:Name="Abs">
             <StackLayout AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0,0,1,1">
-                <ListView x:Name="Lista" RowHeight="90">
+                <ListView x:Name="Lista" RowHeight="90" HorizontalOptions="FillAndExpand">
                     <ListView.ItemTemplate >
                     <DataTemplate>
                         <ViewCell>
-                            <StackLayout>
-                                <Label Margin="8,0,0,0" Text="{Binding Usuario.Nome}" FontSize="Large" FontAttributes="Bold" TextColor="Black"/>
+                            <StackLayout HorizontalOptions="FillAndExpand">
                                 <StackLayout Orientation="Horizontal">
-                                    <Label Text="Linguas:" FontSize="Medium" TextColor="Black"/>
-                                    <Label Text="{Binding LinguasStr}" FontSize="Medium" TextColor="Black"/>
+                                    <StackLayout>
+                                            <Label Margin="8,0,0,0" Text="{Binding Usuario.Nome}" FontSize="Large" FontAttributes="Bold" TextColor="Black"/>
+                                            <StackLayout Orientation="Horizontal">
+                                                <Label Text="Languages:" FontSize="Medium" TextColor="Black"/>
+                                                <Label Text="{Binding LinguasStr}" FontSize="Medium" TextColor="Black"/>
+                                            </StackLayout>
+                                            <StackLayout Orientation="Horizontal">
+                                                <Label Text="Hobbies:" FontSize="Medium" TextColor="Black"/>
+                                                <Label Text="{Binding InteressesStr}" FontSize="Medium" TextColor="Black"/>
+                                            </StackLayout>
+                                        </StackLayout>
+                                        <Button Text="+" Clicked="Add_Tapped" CommandParameter="{Binding Usuario.Id}" VerticalOptions="Start" BackgroundColor="Transparent" FontSize="70" FontAttributes="Bold" TextColor="#1b5e20">
+                                            
+                                        </Button>
+                                    </StackLayout>
+                                
+
+
+
                                 </StackLayout>
-                                
-                                
-                                
-                            </StackLayout>
                             
                         </ViewCell>
 

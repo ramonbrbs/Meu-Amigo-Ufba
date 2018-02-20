@@ -151,5 +151,45 @@ namespace MeuAmigo.WS
                 throw ex;
             }
         }
+
+        public static async Task<List<Interesse>> GetInteresseUsuario(int id)
+        {
+            try
+            {
+                //string cnpj, string cpf, DateTime? mes, DateTime? inicioPeriodo, DateTime? fimPeriodo, int convenioId, int //hospitalId, string paciente, int? situacaoId
+
+                string url = Constantes.URL_API + $"interesses_usuario?id={id}";
+                var req = new Request(url);
+                return await req.Get<List<Interesse>>();
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+        }
+
+        public class SolicitarVM
+        {
+            public int id { get; set; }
+            public int id2 { get; set; }
+        }
+        public static async Task<Object> SolicitarContato(int id)
+        {
+            try
+            {
+                //string cnpj, string cpf, DateTime? mes, DateTime? inicioPeriodo, DateTime? fimPeriodo, int convenioId, int //hospitalId, string paciente, int? situacaoId
+
+                string url = Constantes.URL_API + $"solicitar_contato";
+                var req = new Request(url);
+                var s = new SolicitarVM(){id=Session.UsuarioLogado.Id, id2 = id};
+                return await req.Post<Object>(s);
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+        }
     }
 }
