@@ -191,5 +191,29 @@ namespace MeuAmigo.WS
                 throw ex;
             }
         }
+
+        public class AceitarVM
+        {
+            public int id { get; set; }
+            public int idcontato { get; set; }
+        }
+
+        public static async Task<Object> AceitarContato(int id)
+        {
+            try
+            {
+                //string cnpj, string cpf, DateTime? mes, DateTime? inicioPeriodo, DateTime? fimPeriodo, int convenioId, int //hospitalId, string paciente, int? situacaoId
+
+                string url = Constantes.URL_API + $"aprovar_contato";
+                var req = new Request(url);
+                var s = new AceitarVM() { id = Session.UsuarioLogado.Id, idcontato = id };
+                return await req.Post<Object>(s);
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+        }
     }
 }

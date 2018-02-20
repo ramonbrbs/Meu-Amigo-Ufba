@@ -6,20 +6,42 @@
     <ContentPage.Content>
         <StackLayout Spacing="0">
             <Button Text="Search for Users" Clicked="Search_clicked"></Button>
-            <ListView x:Name="LstContatosPendentes" RowHeight="40" VerticalOptions="Start" SeparatorVisibility="None">
+            <Label Text="Pending Solicitations:"> </Label>
+            <ListView x:Name="LstContatosPendentes" RowHeight="90" VerticalOptions="Start" SeparatorVisibility="None">
                 <ListView.ItemTemplate >
-
                     <DataTemplate>
                         <ViewCell>
-                            <Label Text="{Binding Nome}" FontSize="Medium" TextColor="Black"/>
+                            <StackLayout HorizontalOptions="FillAndExpand">
+                                <StackLayout Orientation="Horizontal">
+                                    <StackLayout>
+                                        <Label Margin="8,0,0,0" Text="{Binding Usuario.Nome}" FontSize="Large" FontAttributes="Bold" TextColor="Black"/>
+                                        <StackLayout Orientation="Horizontal">
+                                            <Label Text="Languages:" FontSize="Medium" TextColor="Black"/>
+                                            <Label Text="{Binding LinguasStr}" FontSize="Medium" TextColor="Black"/>
+                                        </StackLayout>
+                                        <StackLayout Orientation="Horizontal">
+                                            <Label Text="Hobbies:" FontSize="Medium" TextColor="Black"/>
+                                            <Label Text="{Binding InteressesStr}" FontSize="Medium" TextColor="Black"/>
+                                        </StackLayout>
+                                    </StackLayout>
+                                    <Button Text="+" Clicked="Aceitar_Tapped" CommandParameter="{Binding Usuario.IdContato}" VerticalOptions="Start" BackgroundColor="Transparent" FontSize="70" FontAttributes="Bold" TextColor="#1b5e20">
+
+                                    </Button>
+                                </StackLayout>
+
+
+
+
+                            </StackLayout>
+
                         </ViewCell>
 
 
                     </DataTemplate>
-                </ListView.ItemTemplate>
+                </ListView.ItemTemplate >
             </ListView>
             
-            
+            <Label Text="---"></Label>
 
             <Label HorizontalOptions="CenterAndExpand" Text="You have no contacts yet." IsVisible="False" x:Name="LblSemItens"></Label>
             <xForms:SfListView x:Name="LstContatos"></xForms:SfListView>

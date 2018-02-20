@@ -45,9 +45,9 @@ class UsuarioController extends Controller
         $id = $request->input('id');
         $usuario = DB::table('usuarios')->where('id', $id)->first();
         if($usuario->tipo == 0){
-            $contatos = DB::table('contatos')->join('usuarios', 'usuarios.id', '=', 'contatos.id_usuario_estrangeiro') ->where('id_usuario_local', $id)->where('aceito',0)->where('estrangeiroaceito','1')->get(['usuarios.*']);
+            $contatos = DB::table('contatos')->join('usuarios', 'usuarios.id', '=', 'contatos.id_usuario_estrangeiro') ->where('id_usuario_local', $id)->where('aceito',0)->where('estrangeiroaceito','1')->get(['usuarios.*','contatos.id as idcontato']);
         }else{
-            $contatos = DB::table('contatos')->join('usuarios', 'usuarios.id', '=', 'contatos.id_usuario_local') ->where('id_usuario_estrangeiro', $id)->where('aceito',0)->where('localaceito','1')->get(['usuarios.*']);
+            $contatos = DB::table('contatos')->join('usuarios', 'usuarios.id', '=', 'contatos.id_usuario_local') ->where('id_usuario_estrangeiro', $id)->where('aceito',0)->where('localaceito','1')->get(['usuarios.*', 'contatos.id as idcontato']);
         }
         
         return response()->json($contatos,200);
