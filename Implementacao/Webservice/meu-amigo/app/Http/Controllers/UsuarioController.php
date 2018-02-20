@@ -147,12 +147,15 @@ class UsuarioController extends Controller
         $id = $request->input('id');
         $id2 = $request->input('id2');
         $nota = $request->input('nota');
-        $usuario = Usuario_lingua::find($id);
+        $usuario = Usuario::find($id);
+        
         if($usuario->tipo==0){
+            
             $contato = Contato::where('id_usuario_local', $id)->where('id_usuario_estrangeiro',$id2)->first();
             $contato = Contato::find($contato->id);
             $contato->notaestrangeiro = $nota;
         }else{
+            
             $contato = Contato::where('id_usuario_local', $id2)->where('id_usuario_estrangeiro',$id)->first();
             $contato = Contato::find($contato->id);
             $contato->notalocal = $nota;

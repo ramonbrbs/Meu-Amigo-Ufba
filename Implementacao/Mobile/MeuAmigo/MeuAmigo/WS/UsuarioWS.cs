@@ -216,6 +216,32 @@ namespace MeuAmigo.WS
             }
         }
 
+
+        public class InserirNotaVM
+        {
+            public int id { get; set; }
+            public int id2 { get; set; }
+            public int nota { get; set; }
+        }
+
+        public static async Task<Object> InserirNota(int id, int nota)
+        {
+            try
+            {
+                var i = new InserirNotaVM() {id = Session.UsuarioLogado.Id, id2 = id, nota = nota};
+
+                string url = Constantes.URL_API + $"inserir_nota";
+                var req = new Request(url);
+                
+                return await req.Post<Object>(i);
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+        }
+
         public static async Task<Usuario> Info(int id)
         {
             try
