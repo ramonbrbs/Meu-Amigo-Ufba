@@ -8,6 +8,8 @@
             <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
                 <Label Text="Bem Vindo!" FontSize="32" Margin="15,0,0,0" TextColor="#0d47a1"></Label>
                 <StackLayout Margin="8,10,8,0">
+                    <Image HorizontalOptions="Center" HeightRequest="80" WidthRequest="80" x:Name="ImgFoto" IsVisible="False"></Image>
+                    <Button Text="Add Photo" HorizontalOptions="Center" Clicked="PhotoAdd_Clicked"></Button>
                     <Entry x:Name="TxtNome" Placeholder="Nome" HorizontalOptions="FillAndExpand"></Entry>
                     <Entry x:Name="TxtTelefone" Placeholder="Telefone" HorizontalOptions="FillAndExpand"></Entry>
                     <Entry x:Name="TxtNascimento" Placeholder="Data de Nascimento" Focused="TxtNascimento_OnFocused"></Entry>
@@ -26,7 +28,7 @@
             <StackLayout VerticalOptions="CenterAndExpand" HorizontalOptions="FillAndExpand" Orientation="Horizontal" Margin="8,0,8,0" Spacing="8">
                 <Grid HorizontalOptions="FillAndExpand">
                     <Grid.GestureRecognizers>
-                        <TapGestureRecognizer Tapped="Outside_Clicked"></TapGestureRecognizer>
+                        <TapGestureRecognizer Tapped="Ufba_Clicked"></TapGestureRecognizer>
                     </Grid.GestureRecognizers>
                     <Button BackgroundColor="#0d47a1" TextColor="White" Opacity=".8" HorizontalOptions="FillAndExpand" HeightRequest="120" Clicked="Outside_Clicked"></Button>
                     <Label HorizontalOptions="CenterAndExpand" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" FontSize="16" TextColor="White" Text="I'm an UFBA student" LineBreakMode="WordWrap"></Label>

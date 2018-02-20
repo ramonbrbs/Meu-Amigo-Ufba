@@ -54,10 +54,23 @@ namespace MeuAmigo.Views
                 lista.Add(b);
             }
             LstContatosPendentes.ItemsSource = lista;
-
+            if (lista.Count == 0)
+            {
+                LstContatosPendentes.IsVisible = false;
+                LblPendentes.IsVisible = false;
+            }
+            else
+            {
+                LstContatosPendentes.IsVisible = true;
+                LblPendentes.IsVisible = true;
+            }
             if (contatos.Count == 0)
             {
                 LblSemItens.IsVisible = true;
+            }
+            else
+            {
+                LblSemItens.IsVisible = false;
             }
             return true;
         }

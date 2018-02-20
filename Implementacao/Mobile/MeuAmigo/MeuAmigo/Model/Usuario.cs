@@ -1,8 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Newtonsoft.Json;
+using Xamarin.Forms;
 
 namespace MeuAmigo.Model
 {
@@ -18,11 +21,22 @@ namespace MeuAmigo.Model
         public string Senha { get; set; }
         public string Origem { get; set; }
         public int Curso_Id { get; set; }
+
+        [JsonIgnore]
+        public ImageSource FotoSource {
+            get
+            {
+                return ImageSource.FromStream(() => new MemoryStream(Foto));
+            } }
+
+        [JsonIgnore]
         public int? IdContato { get; set; }
 
         public override string ToString()
         {
             return Nome;
         }
+
+
     }
 }

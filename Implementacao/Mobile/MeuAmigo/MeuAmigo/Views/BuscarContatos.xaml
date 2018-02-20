@@ -5,14 +5,17 @@
     <ContentPage.Content>
         <AbsoluteLayout x:Name="Abs">
             <StackLayout AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0,0,1,1">
-                <ListView x:Name="Lista" RowHeight="90" HorizontalOptions="FillAndExpand">
+                <ListView x:Name="Lista" RowHeight="150" HorizontalOptions="FillAndExpand">
                     <ListView.ItemTemplate >
                     <DataTemplate>
                         <ViewCell>
                             <StackLayout HorizontalOptions="FillAndExpand">
                                 <StackLayout Orientation="Horizontal">
                                     <StackLayout>
-                                            <Label Margin="8,0,0,0" Text="{Binding Usuario.Nome}" FontSize="Large" FontAttributes="Bold" TextColor="Black"/>
+                                            <StackLayout Orientation="Horizontal">
+                                                <Image HeightRequest="70" WidthRequest="70" Source="{Binding Usuario.FotoSource}"></Image>
+                                                <Label Margin="8,0,0,0" Text="{Binding Usuario.Nome}" FontSize="Large" FontAttributes="Bold" TextColor="Black"/>
+                                            </StackLayout>
                                             <StackLayout Orientation="Horizontal">
                                                 <Label Text="Languages:" FontSize="Medium" TextColor="Black"/>
                                                 <Label Text="{Binding LinguasStr}" FontSize="Medium" TextColor="Black"/>

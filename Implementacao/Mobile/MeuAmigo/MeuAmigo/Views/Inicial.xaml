@@ -6,7 +6,7 @@
     <ContentPage.Content>
         <StackLayout Spacing="0">
             <Button Text="Search for Users" Clicked="Search_clicked"></Button>
-            <Label Text="Pending Solicitations:"> </Label>
+            <Label Text="Pending Solicitations:" x:Name="LblPendentes"> </Label>
             <ListView x:Name="LstContatosPendentes" RowHeight="90" VerticalOptions="Start" SeparatorVisibility="None">
                 <ListView.ItemTemplate >
                     <DataTemplate>
@@ -40,11 +40,38 @@
                     </DataTemplate>
                 </ListView.ItemTemplate >
             </ListView>
-            
-            <Label Text="---"></Label>
 
-            <Label HorizontalOptions="CenterAndExpand" Text="You have no contacts yet." IsVisible="False" x:Name="LblSemItens"></Label>
-            <xForms:SfListView x:Name="LstContatos"></xForms:SfListView>
+
+            <Label HorizontalOptions="StartAndExpand" Margin="10,10,0,0" Text="Contacts" TextColor="Black" FontSize="40" FontAttributes="Bold"></Label>
+            <Label HorizontalOptions="CenterAndExpand" Margin="0,10,0,0" Text="You have no contacts." IsVisible="False" x:Name="LblSemItens"></Label>
+            <ListView x:Name="LstContatos" Margin="10,10,0,0" HeightRequest="90" SeparatorVisibility="None">
+                <ListView.ItemTemplate >
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout HorizontalOptions="FillAndExpand">
+                                <StackLayout Orientation="Horizontal">
+                                    <StackLayout>
+                                        <StackLayout Orientation="Horizontal">
+                                            <Image HeightRequest="70" WidthRequest="70" Source="{Binding FotoSource}"></Image>
+                                            <Label Margin="8,0,0,0" Text="{Binding Nome}" FontSize="Large" FontAttributes="Bold" TextColor="Black"/>
+                                        </StackLayout>
+                                    </StackLayout>
+                                    
+
+                                   
+                                </StackLayout>
+
+
+
+
+                            </StackLayout>
+
+                        </ViewCell>
+
+
+                    </DataTemplate>
+                </ListView.ItemTemplate >
+            </ListView>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

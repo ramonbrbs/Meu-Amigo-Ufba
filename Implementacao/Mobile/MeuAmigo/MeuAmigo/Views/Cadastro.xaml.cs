@@ -1,11 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using MeuAmigo.Model;
 using MeuAmigo.WS;
+using Plugin.Media;
+using Plugin.Media.Abstractions;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -19,6 +22,7 @@ namespace MeuAmigo.Views
             InitializeComponent();
         }
 
+        private byte[] foto;
         protected override async void OnAppearing()
         {
             base.OnAppearing();
@@ -43,8 +47,11 @@ namespace MeuAmigo.Views
             CurrentPage = PageSelecao;
         }
 
+        private int tipo;
+
         private void Outside_Clicked(object sender, EventArgs e)
         {
+            tipo = 1;
             CurrentPage = LinguaCurso;
         }
 
@@ -64,6 +71,8 @@ namespace MeuAmigo.Views
             u.Senha = TxtSenha.Text;
             u.Telefone = TxtTelefone.Text;
             u.Curso_Id = ((Curso) PckCurso.SelectedItem).Id;
+            u.Foto = foto;
+            u.Tipo = tipo.ToString();
             var retorno = await UsuarioWS.Cadastrar(u);
             if (retorno != null)
             {
@@ -104,6 +113,48 @@ namespace MeuAmigo.Views
             itens.Add((Lingua)PckLinguas.SelectedItem);
             LstLinguas.ItemsSource = itens;
             PckLinguas.SelectedIndex = -1;
+        }
+
+        private async void PhotoAdd_Clicked(object sender, EventArgs e)
+        {
+            try
+            {
+                await CrossMedia.Current.Initialize();
+                
+                var file = await CrossMedia.Current.PickPhotoAsync(new PickMediaOptions());
+
+                if (file == null)
+                    return;
+
+                await DisplayAlert("File Location", file.Path, "OK");
+                MemoryStream ms = new MemoryStream();
+
+                var str = file.GetStream();
+                var fotoSource = ImageSource.FromStream(() =>
+                {
+                    var stream = file.GetStream();
+                    file.Dispose();
+                    str = stream;
+                    return stream;
+                });
+
+                str.CopyTo(ms);
+                foto = ms.ToArray();
+                ImgFoto.Source = fotoSource;
+                ImgFoto.IsVisible = true;
+            }
+            catch (Exception exception)
+            {
+                
+                throw exception;
+            }
+            
+        }
+
+        private void Ufba_Clicked(object sender, EventArgs e)
+        {
+            tipo = 0;
+            CurrentPage = LinguaCurso;
         }
     }
 }
