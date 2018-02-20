@@ -27,3 +27,5 @@ Route::post('interesses', 'InteresseController@store');
 Route::post('linguas', 'LinguaController@store');
 Route::get('contatos', 'UsuarioController@contatos');
 Route::get('contatos_pendentes', 'UsuarioController@contatos_aceitar');
+Route::post('aprovar_contato', 'UsuarioController@aprovar_contato');
+Route::post('solicitar_contato', 'UsuarioController@solicitar_contato');

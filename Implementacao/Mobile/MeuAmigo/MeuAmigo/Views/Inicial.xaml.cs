@@ -25,7 +25,11 @@ namespace MeuAmigo.Views
             {
                 base.OnAppearing();
                 var contatos = await UsuarioWS.GetContatos(Session.UsuarioLogado.Id);
+                var pendentes = await UsuarioWS.GetContatosPendentes(Session.UsuarioLogado.Id);
                 LstContatos.ItemsSource = contatos;
+                
+                LstContatosPendentes.ItemsSource = pendentes;
+                LstContatosPendentes.HeightRequest = 40;
                 if (contatos.Count == 0)
                 {
                     LblSemItens.IsVisible = true;

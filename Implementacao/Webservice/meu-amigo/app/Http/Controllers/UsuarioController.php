@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Usuario;
+use App\Contato;
 use DB;
 
 class UsuarioController extends Controller
@@ -49,6 +50,68 @@ class UsuarioController extends Controller
         }
         
         return response()->json($contatos,200);
+        
+    }
+
+    public function aprovar_contato(Request $request){
+        $id = $request->input('id');
+        $idcontato = $request->input('idcontato');
+        $usuario = Usuario::find($id);
+        $contato = Contato::find($idcontato);
+        if($usuario->tipo == 0){
+            $contato->localaceito = 1;
+        }else{
+            $contato->estrangeiroaceito = 1;
+        }
+        $contato->aceito = 1;
+        $contato->save();
+        return response()->json($contato,200);
+        
+    }
+
+    public function solicitar_contato(Request $request){
+        $id = $request->input('id');
+        $id2 = $request->input('id2');
+        $usuario = Usuario::find($id);
+        $usuario2 = Usuario::find($id2);
+        $contato = new Contato;
+        if($usuario->tipo == 0){
+            $contato->id_usuario_local = $id;
+            $contato->id_usuario_estrangeiro = $id2;
+            $contato->localaceito = 1;
+            $contato->estrangeiroaceito = 0;
+        }else{
+            $contato->id_usuario_local = $id2;
+            $contato->id_usuario_estrangeiro = $id;
+            $contato->estrangeiroaceito = 1;
+            $contato->localaceito = 0;
+        }
+        $contato->aceito = 0;
+        $contato->save();
+        return response()->json($contato,200);
+        
+    }
+
+    public function buscar_contatos(Request $request){
+        $id = $request->input('id');
+        $id2 = $request->input('id2');
+        $usuario = Usuario::find($id);
+        $usuario2 = Usuario::find($id2);
+        $contato = new Contato;
+        if($usuario->tipo == 0){
+            $contato->id_usuario_local = $id;
+            $contato->id_usuario_estrangeiro = $id2;
+            $contato->localaceito = 1;
+            $contato->estrangeiroaceito = 0;
+        }else{
+            $contato->id_usuario_local = $id2;
+            $contato->id_usuario_estrangeiro = $id;
+            $contato->estrangeiroaceito = 1;
+            $contato->localaceito = 0;
+        }
+        $contato->aceito = 0;
+        $contato->save();
+        return response()->json($contato,200);
         
     }
 }
