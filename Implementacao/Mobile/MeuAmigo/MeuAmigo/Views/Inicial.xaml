@@ -2,10 +2,10 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:xForms="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms"
-             x:Class="MeuAmigo.Views.Inicial">
+             x:Class="MeuAmigo.Views.Inicial" Title="Meu Amigo UFBA">
     <ContentPage.Content>
         <StackLayout Spacing="0">
-            <Button Text="Search for Users" Clicked="Search_clicked"></Button>
+            <Button Text="Search for Users" Clicked="Search_clicked" BackgroundColor="#1e88e5" TextColor="White"></Button>
             <Label Text="Pending Solicitations:" x:Name="LblPendentes"> </Label>
             <ListView x:Name="LstContatosPendentes" RowHeight="155" VerticalOptions="Start" SeparatorVisibility="None" >
                 <ListView.ItemTemplate >

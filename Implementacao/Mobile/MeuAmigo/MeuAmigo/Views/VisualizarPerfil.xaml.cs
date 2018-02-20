@@ -27,8 +27,11 @@ namespace MeuAmigo.Views
             var usuario = await UsuarioWS.Info(_id);
             var vm = new BuscarContatos.BuscaVM();
             var interesses = await UsuarioWS.GetInteresseUsuario(_id);
+            LstInteresses.HeightRequest = 40 * interesses.Count + 8;
+            
             LstInteresses.ItemsSource = interesses;
             var linguas = await UsuarioWS.GetLinguaUsuario(_id);
+            LstLinguas.HeightRequest = 40 * linguas.Count + 8;
             LstLinguas.ItemsSource = linguas;
             LblNota.Text = Convert.ToString(await UsuarioWS.Nota(_id));
             vm.Usuario = usuario;

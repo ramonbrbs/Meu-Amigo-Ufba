@@ -2,8 +2,8 @@
 <CarouselPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:xForms="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms"
-             x:Class="MeuAmigo.Views.Cadastro">
-    <ContentPage x:Name="Page1">
+             x:Class="MeuAmigo.Views.Cadastro" Title="Register">
+    <ContentPage x:Name="Page1" >
         <ScrollView>
             <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
                 <Label Text="Bem Vindo!" FontSize="32" Margin="15,0,0,0" TextColor="#0d47a1"></Label>
@@ -22,7 +22,7 @@
         </ScrollView>
         
     </ContentPage>
-    <ContentPage x:Name="PageSelecao">
+    <ContentPage x:Name="PageSelecao" >
         <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
             <Label Text="Where are you from?" FontSize="20" Margin="15,0,0,0" TextColor="#0d47a1"></Label>
             <StackLayout VerticalOptions="CenterAndExpand" HorizontalOptions="FillAndExpand" Orientation="Horizontal" Margin="8,0,8,0" Spacing="8">
@@ -45,7 +45,7 @@
             </StackLayout>
         
     </ContentPage>
-    <ContentPage x:Name="LinguaCurso">
+    <ContentPage x:Name="LinguaCurso" >
         <StackLayout Margin="8">
             <Picker Title="What's your course?" x:Name="PckCurso"></Picker>
             <Entry x:Name="TxtOrigem" Placeholder="What's your nationality?"></Entry>

@@ -2,14 +2,20 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:xForms="clr-namespace:Syncfusion.SfRating.XForms;assembly=Syncfusion.SfRating.XForms"
-             x:Class="MeuAmigo.Views.VisualizarPerfil">
+             x:Class="MeuAmigo.Views.VisualizarPerfil" Title="Profile">
     <ContentPage.Content>
-        <StackLayout Margin="10" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+        <ScrollView>
+        <StackLayout Margin="10" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Spacing="0">
             <Image Source="{Binding Usuario.FotoSource}" HorizontalOptions="Center" WidthRequest="120" HeightRequest="120"></Image>
             <StackLayout Orientation="Horizontal">
                 <Label TextColor="Black" FontSize="40" FontAttributes="Bold" Text="{Binding Usuario.Nome}"></Label>
                 <Label VerticalOptions="Center" FontSize="16" x:Name="LblNota" FontAttributes="Bold" Margin="8,0,0,0"></Label>
             </StackLayout>
+            <xForms:SfRating x:Name="rating" HorizontalOptions="CenterAndExpand" ValueChanged="Rating_OnValueChanged">
+                <xForms:SfRating.RatingSettings>
+                    <xForms:SfRatingSettings RatedFill="Goldenrod"/>
+                </xForms:SfRating.RatingSettings>
+            </xForms:SfRating>
             <StackLayout Orientation="Horizontal">
                 <Label TextColor="Black" Text="From:" Margin="0,10,0,0" FontSize="18" FontAttributes="Bold"></Label>
                 <Label TextColor="Black" VerticalOptions="Center" Text="{Binding Usuario.Origem}" Margin="0,10,0,0" FontSize="18"></Label>
@@ -18,27 +24,26 @@
                 <Label TextColor="Black" Text="Phone:" Margin="0,10,0,0" FontSize="18" FontAttributes="Bold"></Label>
                 <Label TextColor="Black" VerticalOptions="Center" Text="{Binding Usuario.Telefone}" Margin="0,10,0,0" FontSize="18"></Label>
             </StackLayout>
-            <xForms:SfRating x:Name="rating" HorizontalOptions="CenterAndExpand" ValueChanged="Rating_OnValueChanged">
-                <xForms:SfRating.RatingSettings>
-                    <xForms:SfRatingSettings RatedFill="Goldenrod"/>
-                </xForms:SfRating.RatingSettings>
-            </xForms:SfRating>
+            
             <Label TextColor="Black" Text="Languages:" Margin="0,10,0,0" FontSize="18" FontAttributes="Bold"></Label>
-            <ListView x:Name="LstLinguas" SeparatorVisibility="None" RowHeight="40">
-                <ListView.ItemTemplate >
-                    <DataTemplate>
-                        <ViewCell>
-                            <StackLayout Orientation="Horizontal">
-                                <StackLayout WidthRequest="15" BackgroundColor="DodgerBlue" VerticalOptions="FillAndExpand"></StackLayout>
-                                <Label VerticalOptions="Center" TextColor="Black" FontSize="17" Text="{Binding Nome}"></Label>
-                            </StackLayout>
+                <StackLayout Spacing="0">
+                    <ListView x:Name="LstLinguas" SeparatorVisibility="None" RowHeight="40" MinimumHeightRequest="50">
+                        <ListView.ItemTemplate >
+                            <DataTemplate>
+                                <ViewCell>
+                                    <StackLayout Orientation="Horizontal">
+                                        <StackLayout WidthRequest="15" BackgroundColor="DodgerBlue" VerticalOptions="FillAndExpand"></StackLayout>
+                                        <Label VerticalOptions="Center" TextColor="Black" FontSize="17" Text="{Binding Nome}"></Label>
+                                    </StackLayout>
 
-                        </ViewCell>
+                                </ViewCell>
 
 
-                    </DataTemplate>
-                </ListView.ItemTemplate >
-            </ListView>
+                            </DataTemplate>
+                        </ListView.ItemTemplate >
+                    </ListView>
+                </StackLayout>
+            
 
             <Label TextColor="Black" Text="Hobbies:" Margin="0,20,0,0" FontSize="18" FontAttributes="Bold"></Label>
             <ListView x:Name="LstInteresses" SeparatorVisibility="None" RowHeight="40">
@@ -58,6 +63,6 @@
             </ListView>
 
         </StackLayout>
-        
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>
