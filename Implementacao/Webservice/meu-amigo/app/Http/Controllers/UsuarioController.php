@@ -103,7 +103,7 @@ class UsuarioController extends Controller
 
     public function buscar_contatos(Request $request){
         $id = $request->input('id');
-        $usuario = Usuario_lingua::find($id);
+        $usuario = Usuario::find($id);
         if($usuario->tipo==0){
             $usuarios = DB::table('usuarios as u')->whereRaw("score($id,u.id) > 0 and (SELECT COUNT(*) FROM contatos where id_usuario_local = $id and id_usuario_estrangeiro = u.id LIMIT 1) = 0")->orderByRaw("score($id, u.id) DESC")->get();
         }else{
@@ -127,7 +127,7 @@ class UsuarioController extends Controller
 
     public function nota_usuario(Request $request){
         $id = $request->input('id');
-        $usuario = Usuario_lingua::find($id);
+        $usuario = Usuario::find($id);
         if($usuario->tipo==0){
             $nota = DB::select("SELECT SUM(notalocal) / (SELECT count(*) FROM contatos where id_usuario_local = $id AND notalocal is not NULL) FROM `contatos` WHERE id_usuario_local = $id");
         }else{

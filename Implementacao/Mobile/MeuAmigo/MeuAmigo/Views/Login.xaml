@@ -26,7 +26,7 @@
                             <ColumnDefinition Width="8*"></ColumnDefinition>
                             <ColumnDefinition Width="1*"></ColumnDefinition>
                         </Grid.ColumnDefinitions>
-
+<Label HorizontalOptions="CenterAndExpand" Text="Meu Amigo Ufba" FontSize="40" FontAttributes="Bold" Grid.Row="0" Grid.Column="1"></Label>
                         <StackLayout Grid.Row="1" Grid.Column="1" Orientation="Horizontal" HorizontalOptions="FillAndExpand">
                             <Image Source="user.png" WidthRequest="32" HeightRequest="32"></Image>
                             <Entry Keyboard="Email" HorizontalTextAlignment="Center" Placeholder="E-mail"  VerticalOptions="Center" HorizontalOptions="FillAndExpand"  FontSize="Medium" x:Name="TxtEmail" TextColor="Black" PlaceholderColor="#424242"></Entry>

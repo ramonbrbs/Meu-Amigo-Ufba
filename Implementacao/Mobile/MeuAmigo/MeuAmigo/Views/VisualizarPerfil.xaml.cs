@@ -33,7 +33,12 @@ namespace MeuAmigo.Views
             var linguas = await UsuarioWS.GetLinguaUsuario(_id);
             LstLinguas.HeightRequest = 40 * linguas.Count + 8;
             LstLinguas.ItemsSource = linguas;
-            LblNota.Text = Convert.ToString(await UsuarioWS.Nota(_id));
+            var nota = (await UsuarioWS.Nota(_id));
+            if (nota.HasValue)
+            {
+                LblNota.Text = nota.Value.ToString("n2");
+            }
+            
             vm.Usuario = usuario;
             BindingContext = vm;
         }

@@ -126,7 +126,7 @@ namespace MeuAmigo.Views
                 if (file == null)
                     return;
 
-                await DisplayAlert("File Location", file.Path, "OK");
+                
                 MemoryStream ms = new MemoryStream();
 
                 var str = file.GetStream();

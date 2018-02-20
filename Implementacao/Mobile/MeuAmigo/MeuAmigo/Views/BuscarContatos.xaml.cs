@@ -43,6 +43,10 @@ namespace MeuAmigo.Views
                     lista.Add(b);
                 }
                 Lista.ItemsSource = lista;
+                if (lista.Count == 0)
+                {
+                    Nofound.IsVisible = true;
+                }
             }
             catch (Exception e)
             {
