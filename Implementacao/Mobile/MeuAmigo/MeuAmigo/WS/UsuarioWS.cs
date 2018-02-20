@@ -232,5 +232,22 @@ namespace MeuAmigo.WS
                 throw ex;
             }
         }
+
+        public static async Task<decimal?> Nota(int id)
+        {
+            try
+            {
+                //string cnpj, string cpf, DateTime? mes, DateTime? inicioPeriodo, DateTime? fimPeriodo, int convenioId, int //hospitalId, string paciente, int? situacaoId
+
+                string url = Constantes.URL_API + $"usuario_nota?id={id}";
+                var req = new Request(url);
+                return await req.Get<decimal?>();
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+        }
     }
 }

@@ -25,6 +25,10 @@ namespace MeuAmigo.Views
             base.OnAppearing();
             var usuario = await UsuarioWS.Info(_id);
             var vm = new BuscarContatos.BuscaVM();
+            var interesses = await UsuarioWS.GetInteresseUsuario(_id);
+            var linguas = await UsuarioWS.GetLinguaUsuario(_id);
+            LstLinguas.ItemsSource = linguas;
+            LblNota.Text = Convert.ToString(await UsuarioWS.Nota(_id));
             vm.Usuario = usuario;
             BindingContext = vm;
         }

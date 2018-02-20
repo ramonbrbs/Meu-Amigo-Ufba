@@ -105,6 +105,15 @@
     <Reference Include="Syncfusion.SfListView.XForms.Android, Version=15.4451.0.20, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Syncfusion.Xamarin.SfListView.15.4.0.20\lib\MonoAndroid10\Syncfusion.SfListView.XForms.Android.dll</HintPath>
     </Reference>
+    <Reference Include="Syncfusion.SfRating.Android, Version=15.4451.0.20, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Syncfusion.Xamarin.SfRating.15.4.0.20\lib\MonoAndroid10\Syncfusion.SfRating.Android.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.SfRating.XForms, Version=15.4451.0.20, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Syncfusion.Xamarin.SfRating.15.4.0.20\lib\MonoAndroid10\Syncfusion.SfRating.XForms.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.SfRating.XForms.Android, Version=15.4451.0.20, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Syncfusion.Xamarin.SfRating.15.4.0.20\lib\MonoAndroid10\Syncfusion.SfRating.XForms.Android.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.ObjectModel" />

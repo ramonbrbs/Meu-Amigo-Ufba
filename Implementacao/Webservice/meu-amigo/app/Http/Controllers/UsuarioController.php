@@ -124,4 +124,56 @@ class UsuarioController extends Controller
         $linguas = DB::table('usuario_interesses as ui')->join('interesses as i', 'i.id', '=', 'ui.id_interesse')->where("id_usuario","$id")->get(['i.*']);
         return response()->json($linguas,200);
     }
+
+    public function nota_usuario(Request $request){
+        $id = $request->input('id');
+        $usuario = Usuario_lingua::find($id);
+        if($usuario->tipo==0){
+            $nota = DB::select("SELECT SUM(notalocal) / (SELECT count(*) FROM contatos where id_usuario_local = $id AND notalocal is not NULL) FROM `contatos` WHERE id_usuario_local = $id");
+        }else{
+            $nota = DB::select("SELECT SUM(notalocal) / (SELECT count(*) FROM contatos where id_usuario_estrangeiro = $id AND notaestrangeiro is not NULL) FROM `contatos` WHERE id_usuario_estrangeiro = $id");
+        }
+        
+        foreach ($nota as $k => $valor){
+            foreach($valor as $kk => $v){
+                return response()->json((float)$v,200);
+            }
+            
+        }
+        
+    }
+
+    public function inserir_nota(Request $request){
+        $id = $request->input('id');
+        $id2 = $request->input('id2');
+        $nota = $request->input('nota');
+        $usuario = Usuario_lingua::find($id);
+        if($usuario->tipo==0){
+            $contato = Contato::where('id_usuario_local', $id)->where('id_usuario_estrangeiro',$id2)->first();
+            $contato = Contato::find($contato->id);
+            $contato->notaestrangeiro = $nota;
+        }else{
+            $contato = Contato::where('id_usuario_local', $id2)->where('id_usuario_estrangeiro',$id)->first();
+            $contato = Contato::find($contato->id);
+            $contato->notalocal = $nota;
+        }
+        $contato->save();
+    
+        return response()->json($contato,200);
+    }
+
+    public function contato(Request $request){
+        $id = $request->input('id');
+        $id2 = $request->input('id2');
+        $usuario = Usuario::find($id);
+        if($usuario->tipo==0){
+            $contato = Contato::where('id_usuario_local', $id)->where('id_usuario_estrangeiro',$id2)->first();
+            
+        }else{
+            $contato = Contato::where('id_usuario_local', $id2)->where('id_usuario_estrangeiro',$id)->first();
+        }
+        $contato->save();
+    
+        return response()->json($contato,200);
+    }
 }
