@@ -94,24 +94,7 @@ class UsuarioController extends Controller
 
     public function buscar_contatos(Request $request){
         $id = $request->input('id');
-        $id2 = $request->input('id2');
-        $usuario = Usuario::find($id);
-        $usuario2 = Usuario::find($id2);
-        $contato = new Contato;
-        if($usuario->tipo == 0){
-            $contato->id_usuario_local = $id;
-            $contato->id_usuario_estrangeiro = $id2;
-            $contato->localaceito = 1;
-            $contato->estrangeiroaceito = 0;
-        }else{
-            $contato->id_usuario_local = $id2;
-            $contato->id_usuario_estrangeiro = $id;
-            $contato->estrangeiroaceito = 1;
-            $contato->localaceito = 0;
-        }
-        $contato->aceito = 0;
-        $contato->save();
-        return response()->json($contato,200);
-        
+        $usuarios = DB::table('usuarios')->whereRaw("score($id,id) > 0")->orderByRaw("score($id, id)")->get();
+        return response()->json($usuarios,200);
     }
 }
