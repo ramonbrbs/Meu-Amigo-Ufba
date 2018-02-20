@@ -8,7 +8,12 @@ namespace MeuAmigo.Model
 {
     public class Curso
     {
-        public int IdCurso { get; set; }
+        public int Id { get; set; }
         public string Nome { get; set; }
+
+        public override string ToString()
+        {
+            return Nome;
+        }
     }
 }

@@ -12,9 +12,15 @@ namespace MeuAmigo.Model
         public string Nome { get; set; }
         public string Telefone { get; set; }
         public string Email { get; set; }
-        public int Idade { get; set; }
-        public bool Tipo { get; set; }
+        public DateTime Nascimento { get; set; }
+        public string Tipo { get; set; }
         public string Senha { get; set; }
         public string Origem { get; set; }
+        public int Curso_Id { get; set; }
+
+        public override string ToString()
+        {
+            return Nome;
+        }
     }
 }

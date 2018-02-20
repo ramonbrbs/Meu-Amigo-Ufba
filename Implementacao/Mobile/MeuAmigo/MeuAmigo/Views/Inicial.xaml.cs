@@ -21,13 +21,22 @@ namespace MeuAmigo.Views
 
         protected override async void OnAppearing()
         {
-            base.OnAppearing();
-            var contatos = await UsuarioWS.SelecionarContatos(Session.UsuarioLogado);
-            LstContatos.ItemsSource = contatos;
-            if (contatos.Count == 0)
+            try
             {
-                LblSemItens.IsVisible = true;
+                base.OnAppearing();
+                var contatos = await UsuarioWS.GetContatos(Session.UsuarioLogado.Id);
+                LstContatos.ItemsSource = contatos;
+                if (contatos.Count == 0)
+                {
+                    LblSemItens.IsVisible = true;
+                }
             }
+            catch (Exception e)
+            {
+                
+                throw e;
+            }
+            
         }
     }
 }

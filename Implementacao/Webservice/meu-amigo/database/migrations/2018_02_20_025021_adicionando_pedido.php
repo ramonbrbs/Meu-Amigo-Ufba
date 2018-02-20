@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AdicionandoEstrangeiras extends Migration
+class AdicionandoPedido extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,9 @@ class AdicionandoEstrangeiras extends Migration
      */
     public function up()
     {
-        Schema::table('usuarios', function(Blueprint $table) {
-            $table->index('curso_id');
-            $table->foreign('curso_id')->references('id')->on('cursos');
+        Schema::table('contatos', function(Blueprint $table) {
+            $table->boolean('estrangeiroaceito');
+            $table->boolean('localaceito');
         });
     }
 

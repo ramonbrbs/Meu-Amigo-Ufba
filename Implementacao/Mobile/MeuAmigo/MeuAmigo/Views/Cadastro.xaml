@@ -12,7 +12,8 @@
                     <Entry x:Name="TxtTelefone" Placeholder="Telefone" HorizontalOptions="FillAndExpand"></Entry>
                     <Entry x:Name="TxtNascimento" Placeholder="Data de Nascimento" Focused="TxtNascimento_OnFocused"></Entry>
                     <DatePicker IsVisible="False" x:Name="Nascimento" HorizontalOptions="FillAndExpand" DateSelected="Nascimento_OnDateSelected"></DatePicker>
-                    <Entry x:Name="Email" Placeholder="E-mail"></Entry>
+                    <Entry x:Name="TxtEmail" Placeholder="E-mail"></Entry>
+                    <Entry x:Name="TxtSenha" IsPassword="True" Placeholder="E-mail"></Entry>
                 </StackLayout>
                 <Button HorizontalOptions="EndAndExpand" TextColor="White" Text="Próximo" BackgroundColor="#1b5e20" Clicked="Page1_Proximo" Margin="8" ></Button>
             </StackLayout>
@@ -44,10 +45,10 @@
     </ContentPage>
     <ContentPage x:Name="LinguaCurso">
         <StackLayout Margin="8">
-            <Entry Placeholder="What's your course?"></Entry>
-            <Entry Placeholder="What's your nationality?"></Entry>
+            <Picker Title="What's your course?" x:Name="PckCurso"></Picker>
+            <Entry x:Name="TxtOrigem" Placeholder="What's your nationality?"></Entry>
             <Label Text="What languages do you speak?"></Label>
-            <Picker x:Name="PckLinguas"></Picker>
+            <Picker x:Name="PckLinguas" SelectedIndexChanged="PckLinguas_OnSelectedIndexChanged"></Picker>
             <xForms:SfListView x:Name="LstLinguas" />
             <Button HorizontalOptions="EndAndExpand" TextColor="White" Text="Next" BackgroundColor="#1b5e20" Clicked="PageDetalhes_Proximo" Margin="0,8,0,0" ></Button>
         </StackLayout>
@@ -56,7 +57,11 @@
     <ContentPage x:Name="Interesses">
         <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
             <Label Text="What are your interests?"></Label>
-            <xForms:SfListView x:Name="LstInteresses" />
+            <xForms:SfListView x:Name="LstInteresses" SelectionMode="Multiple" >
+                <xForms:SfListView.LayoutManager>
+                    <xForms:GridLayout SpanCount="2" />
+                </xForms:SfListView.LayoutManager>
+            </xForms:SfListView>
 
             <Button HorizontalOptions="EndAndExpand" TextColor="White" Text="Complete" BackgroundColor="#1b5e20" Clicked="Concluir_Clicked" Margin="0,8,0,0" ></Button>
         </StackLayout>
